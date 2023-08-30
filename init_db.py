@@ -1,11 +1,24 @@
+import os
 import psycopg2
 
-connectDB = psycopg2.connect(host="localhost",
-                             dbname="postgres",
-                             user="postgres",
-                             password="ag",
-                             port=5432)
-cur = connectDB.cursor()
+conn = psycopg2.connect(os.environ["DATABASE_URL"])
+
+with conn.cursor() as cur:
+    cur.execute("SELECT now()")
+    res = cur.fetchall()
+    conn.commit()
+    print(res)
+
+    
+# import psycopg2
+
+# connectDB = psycopg2.connect(host="localhost",
+#                              dbname="postgres",
+#                              user="postgres",
+#                              password="ag",
+#                              port=5432)
+
+cur = conn.cursor()
 
 # database code
 cur.execute("""CREATE TABLE IF NOT EXISTs person(
@@ -27,6 +40,6 @@ cur.execute("""INSERT INTO person ( id, name, age, gender) VALUES
 
 print(cur.fetchall())
 
-connectDB.commit()
+conn.commit()
 cur.close()
-connectDB.close()
+conn.close()
