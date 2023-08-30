@@ -1,3 +1,4 @@
+import os
 import psycopg2
 from flask import  Flask, request, jsonify
 
@@ -5,12 +6,15 @@ from flask import  Flask, request, jsonify
 app = Flask(__name__)
 
 def dataBaseConnect():
-    connectDB = psycopg2.connect(host="localhost",
-                             dbname="postgres",
-                             user="postgres",
-                             password="ag",
-                             port=5432)
-    return connectDB
+    conn = psycopg2.connect(os.environ["DATABASE_URL"])
+
+    return conn
+    # connectDB = psycopg2.connect(host="localhost",
+    #                          dbname="postgres",
+    #                          user="postgres",
+    #                          password="ag",
+    #                          port=5432)
+    # return connectDB
 
 
 @app.route("/")
