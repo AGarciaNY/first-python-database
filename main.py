@@ -4,25 +4,28 @@ from flask import  Flask, request, jsonify
 
 from DBblueprints.hello_world.hello_world import HWBP
 
+from my_package.my_module import dataBaseConnect
+
 app = Flask(__name__)
 app.register_blueprint(HWBP, url_prefix="/hello")
 # acount.setbackEnd(app)
-def dataBaseConnect():
-    # conn = psycopg2.connect(os.environ["DATABASE_URL"])
-    conn = False
-    # os.environ.getenv
-    # os.getenv("DATABASE_URL", default = False)
-    # print(os.environ["DATABASE_URL"],"here Iam __________________")
-    if os.getenv("DATABASE_URL", default = False) :
-        conn = psycopg2.connect(os.environ["DATABASE_URL"])
-    else:
-        conn = psycopg2.connect(host="localhost",
-                             dbname="postgres",
-                             user="postgres",
-                             password="ag",
-                             port=5432)
+# def dataBaseConnect():
+#     # conn = psycopg2.connect(os.environ["DATABASE_URL"])
+#     conn = False
+#     # os.environ.getenv
+#     # os.getenv("DATABASE_URL", default = False)
+#     # print(os.environ["DATABASE_URL"],"here Iam __________________")
+#     if os.getenv("DATABASE_URL", default = False) :
+#         conn = psycopg2.connect(os.environ["DATABASE_URL"])
+#     else:
+#         conn = psycopg2.connect(host="localhost",
+#                              dbname="postgres",
+#                              user="postgres",
+#                              password="ag",
+#                              port=5432)
     
-    return conn
+#     return conn
+
 def setUp():
     
     conn = dataBaseConnect()
