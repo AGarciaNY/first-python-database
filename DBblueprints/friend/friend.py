@@ -1,9 +1,9 @@
 from flask import Blueprint, render_template, redirect, request
 from my_package.my_module import dataBaseConnect
 
-HWDP = Blueprint("hellow_world", __name__)
+friendDB = Blueprint("friendDB", __name__)
 
-@HWDP.route("/")
+@friendDB.route("/")
 def index():
     connectDB = dataBaseConnect()
     cur = connectDB.cursor()
@@ -15,10 +15,10 @@ def index():
 
     return data
 
-@HWDP.route("/hometwo")
+@friendDB.route("/hometwo")
 def indexTwo():
     return "hello world two"
 
-@HWDP.route("/hometwo/<name>")
+@friendDB.route("/hometwo/<name>")
 def indexThree(name):
     return "hello world two" + name
