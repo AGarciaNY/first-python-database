@@ -1,4 +1,4 @@
-import rsa
+# import rsa
 import os
 from flask import  Flask, request, jsonify
 from my_package.my_module import dataBaseConnect
@@ -10,19 +10,19 @@ from DBblueprints.friend.friend import friendDB
 from DBblueprints.score.score import scoreDB
 
 # ras key cript
-with open("keyPriv2.pem","rb") as f:
-    priveKey = rsa.PrivateKey.load_pkcs1( f.read())
-    print(type(priveKey))
+# with open("keyPriv2.pem","rb") as f:
+#     priveKey = rsa.PrivateKey.load_pkcs1( f.read())
+#     print(type(priveKey))
 
-with open("keyPub2.pem","rb") as f:
-    pubKey = rsa.PublicKey.load_pkcs1( f.read())
-    # print(priveKey)
-ms = "password"
-codeMS = b"5\xf4\x9d\xa4\xbcZ_\xa6p\x8eV\xbd\tj\x02\x10'\x0c\x96\xda[\x08\x00*\x15\xcf\xe9u\x99DV\xd2.L\xd3a\x8d \xc6\x8c\x1b\xed\x9b~z\xd7\x95\xf3xC\xe0;\x1b#e-.3\xf2\xaa+\x1a\xf4\xe1\xcb\x13\x9b\x07AA\xe6\x0e\x1b-4\xe8\x14\xa3[\xf6[\xa1rrs+\xb4y1\xc9\x18\xbc\x80\xd4hV\xc6/\xdaZ'BB%\xaa\xb5y\x93\xe9\x89\x18\x0b\xba\x8d-(\xb9\xf7\xd3\xe4\xde\xe4-\xcc\x92\x06\xe4@"
-encMS = rsa.encrypt(ms.encode(),pubKey)
-deMS = rsa.decrypt(codeMS,priveKey)
-print(deMS) 
-print(encMS) 
+# with open("keyPub2.pem","rb") as f:
+#     pubKey = rsa.PublicKey.load_pkcs1( f.read())
+#     # print(priveKey)
+# ms = "password"
+# codeMS = b"5\xf4\x9d\xa4\xbcZ_\xa6p\x8eV\xbd\tj\x02\x10'\x0c\x96\xda[\x08\x00*\x15\xcf\xe9u\x99DV\xd2.L\xd3a\x8d \xc6\x8c\x1b\xed\x9b~z\xd7\x95\xf3xC\xe0;\x1b#e-.3\xf2\xaa+\x1a\xf4\xe1\xcb\x13\x9b\x07AA\xe6\x0e\x1b-4\xe8\x14\xa3[\xf6[\xa1rrs+\xb4y1\xc9\x18\xbc\x80\xd4hV\xc6/\xdaZ'BB%\xaa\xb5y\x93\xe9\x89\x18\x0b\xba\x8d-(\xb9\xf7\xd3\xe4\xde\xe4-\xcc\x92\x06\xe4@"
+# encMS = rsa.encrypt(ms.encode(),pubKey)
+# deMS = rsa.decrypt(codeMS,priveKey)
+# print(deMS) 
+# print(encMS) 
  
 # friend_requests
 app = Flask(__name__)
